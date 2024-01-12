@@ -1,18 +1,21 @@
 import { Post } from "@/components/post/Post";
 
 const handleFetchPostTopics = async (topics) => {
-  const res = await fetch(
-    `https://www.reddit.com/r/confession/${topics}.json?limit=50`,
-    {
-      method: "GET",
-      revalidate: 3000,
-    }
-  );
   try {
+    const res = await fetch(
+      `https://www.reddit.com/r/confession/${topics}.json?limit=50`,
+      {
+        method: "GET",
+        revalidate: 3000,
+      }
+    );
+    if (!res.ok) {
+      console.log(`HTTP error! Status: ${res.status}`);
+    }
     const data = await res.json();
     return data.data;
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 };
 

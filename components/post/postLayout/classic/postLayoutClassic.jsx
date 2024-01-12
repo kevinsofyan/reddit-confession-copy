@@ -25,7 +25,7 @@ export const PostLayoutClassic = ({ data, index }) => {
   };
   return (
     <Link
-      href={urlPrefixRemover(permalink)}
+      href={"/" + urlPrefixRemover(permalink)}
       className="bg-white rounded-[4px] border border-gray-border hover:border-gray-border-active  flex mb-[10px]"
     >
       <div className="flex-none w-[50px] bg-gray-light rounded-[4px]">

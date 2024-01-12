@@ -7,16 +7,21 @@ export const metadata = {
 };
 
 const handleFetchPost = async () => {
-  const res = await fetch(`https://www.reddit.com/r/confession.json?limit=50`, {
-    method: "GET",
-    revalidate: 3000,
-  });
-
   try {
+    const res = await fetch(
+      `https://www.reddit.com/r/confession.json?limit=50`,
+      {
+        method: "GET",
+        revalidate: 3000,
+      }
+    );
+    if (!res.ok) {
+      console.log(`HTTP error! Status: ${res.status}`);
+    }
     const data = await res.json();
     return data.data;
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 };
 

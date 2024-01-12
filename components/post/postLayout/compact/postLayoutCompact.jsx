@@ -31,7 +31,7 @@ export const PostLayoutCompact = ({ data }) => {
   };
   return (
     <Link
-      href={urlPrefixRemover(permalink)}
+      href={"/" + urlPrefixRemover(permalink)}
       className="bg-white rounded-[4px] border border-gray-border hover:border-gray-border-active  flex"
     >
       <div className="flex-col w-full">

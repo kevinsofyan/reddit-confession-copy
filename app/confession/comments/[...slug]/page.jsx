@@ -4,17 +4,24 @@ import { PostLayoutCardArticles } from "@/components/post/postLayout/card/postLa
 import { Vote } from "@/components/vote/vote";
 
 const handleFetchPostDetails = async (id) => {
-  const res = await fetch(
-    `https://www.reddit.com/r/confession/comments/${id}.json`,
-    {
-      method: "GET",
-      cache: "no-store",
-    }
-  );
   try {
+    const res = await fetch(
+      `https://www.reddit.com/r/confession/comments/${id}.json`,
+      {
+        method: "GET",
+        cache: "no-store",
+      }
+    );
+
+    if (!res.ok) {
+      console.log(`HTTP error! Status: ${res.status}`);
+    }
+
     const data = await res.json();
     return data;
-  } catch (error) {}
+  } catch (error) {
+    console.error(error);
+  }
 };
 
 export async function generateMetadata({ params }) {
@@ -30,6 +37,7 @@ export async function generateMetadata({ params }) {
   }
   return {
     title: postData?.title,
+    description: postData?.selftext,
   };
 }
 
