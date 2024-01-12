@@ -1,4 +1,5 @@
 import { Post } from "@/components/post/Post";
+import { confessionData } from "@/mock/confession";
 import axios from "axios";
 
 export const metadata = {
@@ -23,7 +24,8 @@ const handleFetchPost = async () => {
 };
 
 const Confession = async () => {
-  const postData = await handleFetchPost();
+  const postData = confessionData.data;
+  //const postData = await handleFetchPost();
   return (
     <main className="flex min-h-screen bg-reddit-gray">
       {postData && <Post data={postData} />}

@@ -2,6 +2,7 @@ import { CommentList } from "@/components/comments/commentList";
 import { PostBottomMenu } from "@/components/post/PostBottomMenu";
 import { PostLayoutCardArticles } from "@/components/post/postLayout/card/postLayoutCardArticles";
 import { Vote } from "@/components/vote/vote";
+import { commentsData } from "@/mock/comments";
 import axios from "axios";
 
 const handleFetchPostDetails = async (id) => {
@@ -25,7 +26,8 @@ export async function generateMetadata({ params }) {
   let postData;
   if (params.slug && params.slug[0]) {
     postId = params.slug[0];
-    fetchData = await handleFetchPostDetails(postId);
+    fetchData = commentsData;
+    //fetchData = await handleFetchPostDetails(postId);
     if (fetchData && fetchData[0]) {
       postData = fetchData[0]?.data?.children[0].data;
     }
@@ -44,7 +46,8 @@ const Comments = async ({ params }) => {
 
   if (params.slug && params.slug[0]) {
     postId = params.slug[0];
-    fetchData = await handleFetchPostDetails(postId);
+    fetchData = commentsData;
+    //fetchData = await handleFetchPostDetails(postId);
     if (fetchData && fetchData[0]) {
       postData = fetchData[0]?.data?.children[0].data;
     }

@@ -1,4 +1,5 @@
 import { Post } from "@/components/post/Post";
+import { confessionTopics } from "@/mock/confessionTopics";
 
 import axios from "axios";
 
@@ -15,7 +16,8 @@ const handleFetchPostTopics = async (topics) => {
 };
 const Confession = async ({ params }) => {
   const { topics } = params;
-  const postData = await handleFetchPostTopics(topics);
+  const postData = confessionTopics[topics].data;
+  //const postData = await handleFetchPostTopics(topics);
   return (
     <main className="flex min-h-screen bg-reddit-gray">
       {postData && <Post data={postData} topics={topics} />}
