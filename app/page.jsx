@@ -15,11 +15,7 @@ const handleFetchPost = async (eventId) => {
 
 const SubreditPage = async () => {
   const postData = await handleFetchPost();
-  return (
-    <main className="flex min-h-screen bg-reddit-gray">
-      <Post data={postData} />
-    </main>
-  );
+  return <main className="flex min-h-screen bg-reddit-gray"></main>;
 };
 
 export default SubreditPage;

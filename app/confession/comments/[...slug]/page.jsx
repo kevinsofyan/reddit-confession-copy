@@ -57,6 +57,9 @@ const Comments = async ({ params }) => {
       commentData = fetchData[1].data?.children;
     }
   }
+  if (!commentData) {
+    return <p></p>;
+  }
 
   return (
     <main className="flex min-h-screen bg-reddit-gray">

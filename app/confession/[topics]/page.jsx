@@ -22,6 +22,9 @@ const handleFetchPostTopics = async (topics) => {
 const Confession = async ({ params }) => {
   const { topics } = params;
   const postData = await handleFetchPostTopics(topics);
+  if (!postData) {
+    return <p></p>;
+  }
   return (
     <main className="flex min-h-screen bg-reddit-gray">
       {postData && <Post data={postData} topics={topics} />}

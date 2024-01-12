@@ -13,19 +13,11 @@ const handleFetchPost = async () => {
       {
         method: "GET",
         revalidate: 3000,
+        headers: { "Content-Type": "application/json" },
       }
     );
-
     if (!res.ok) {
-      if (res.status === 403) {
-        console.log(
-          "Access forbidden. You may need to provide valid credentials or handle this case accordingly."
-        );
-        return null;
-      } else {
-        console.log(`HTTP error! Status: ${res.status}`);
-        return null;
-      }
+      throw new Error(`HTTP error! Status: ${res.status}`);
     }
     const data = await res.json();
     return data.data;
@@ -36,6 +28,9 @@ const handleFetchPost = async () => {
 
 const Confession = async () => {
   const postData = await handleFetchPost();
+  if (!postData) {
+    return <p></p>;
+  }
   return (
     <main className="flex min-h-screen bg-reddit-gray">
       {postData && <Post data={postData} />}
