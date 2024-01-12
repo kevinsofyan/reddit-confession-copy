@@ -1,4 +1,5 @@
 import { Post } from "@/components/post/Post";
+import axios from "axios";
 
 export const metadata = {
   title: "Admit your wrongdoings",
@@ -8,19 +9,14 @@ export const metadata = {
 
 const handleFetchPost = async () => {
   try {
-    const res = await fetch(
-      `https://www.reddit.com/r/confession.json?limit=50`,
+    const response = await axios.get(
+      "https://www.reddit.com/r/confession.json?limit=50",
       {
-        method: "GET",
-        revalidate: 3000,
         headers: { "Content-Type": "application/json" },
       }
     );
-    if (!res.ok) {
-      throw new Error(`HTTP error! Status: ${res.status}`);
-    }
-    const data = await res.json();
-    return data.data;
+
+    return response.data.data;
   } catch (error) {
     console.error(error);
   }
@@ -28,9 +24,6 @@ const handleFetchPost = async () => {
 
 const Confession = async () => {
   const postData = await handleFetchPost();
-  if (!postData) {
-    return <p></p>;
-  }
   return (
     <main className="flex min-h-screen bg-reddit-gray">
       {postData && <Post data={postData} />}

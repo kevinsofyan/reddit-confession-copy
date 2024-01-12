@@ -2,23 +2,18 @@ import { CommentList } from "@/components/comments/commentList";
 import { PostBottomMenu } from "@/components/post/PostBottomMenu";
 import { PostLayoutCardArticles } from "@/components/post/postLayout/card/postLayoutCardArticles";
 import { Vote } from "@/components/vote/vote";
+import axios from "axios";
 
 const handleFetchPostDetails = async (id) => {
   try {
-    const res = await fetch(
+    const response = await axios.get(
       `https://www.reddit.com/r/confession/comments/${id}.json`,
       {
-        method: "GET",
-        cache: "no-store",
+        headers: { "Cache-Control": "no-store" },
       }
     );
 
-    if (!res.ok) {
-      console.log(`HTTP error! Status: ${res.status}`);
-    }
-
-    const data = await res.json();
-    return data;
+    return response.data;
   } catch (error) {
     console.error(error);
   }
@@ -56,9 +51,6 @@ const Comments = async ({ params }) => {
     if (fetchData && fetchData[1]) {
       commentData = fetchData[1].data?.children;
     }
-  }
-  if (!postData) {
-    return <p></p>;
   }
 
   return (
