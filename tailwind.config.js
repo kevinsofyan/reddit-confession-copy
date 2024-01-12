@@ -8,21 +8,30 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        gray: "#dae0e6",
-        "gray-border": "#ccc",
         primary: "#1c1c1c",
-        black: "#1A1A1B",
-        white: "#ffffff",
+        "gray-border": "#ccc",
+        "gray-border-active": "#898989",
+        "gray-light": "#f8f9fa",
+        "reddit-black": "#1A1A1B",
+        "reddit-black-100": "#373c3f",
+        "reddit-white": "#ffffff",
+        "reddit-gray": "#dae0e6",
+        "reddit-gray-100": "rgba(26,26,27,0.1)",
+        "reddit-gray-200": "#F6F7F8",
+        "reddit-blue": "#7193ff",
+        "reddit-red": "#ff4500",
+      },
+      fontFamily: {
+        main: ["Noto Sans", "sans-serif"],
       },
       fontSize: {
         xs: "0.75rem", // 12px
-        sm: "0.75rem", // 12px
-        base: "0.875", // 14px
+        sm: "0.875rem", // 14px
+        base: "1rem", // 16px.
         lg: "1.125rem", // 18px
         xl: "1.563rem", // 25px
         "2xl": "2.188rem", // 35px
-        "3xl": "3.125rem", // 50px
-        "4xl": "5.313rem", // 85px
+        "3xl": "3rem", // 48px
       },
       width: {
         "inner-container": "1145px",

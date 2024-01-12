@@ -1,20 +1,25 @@
-import { CommentList } from "@/components/comments/CommentList/PostList";
-import Filter from "@/components/filter/filter";
+import { Post } from "@/components/post/Post";
 
-export default function SubreditPage() {
+const handleFetchPost = async (eventId) => {
+  const res = await fetch(`https://www.reddit.com/r/confession.json?limit=10`, {
+    method: "GET",
+    cache: "no-store",
+  });
+  if (!res.ok) {
+    throw new Error(`Failed to fetch data: ${res.status}`);
+  }
+
+  const data = await res.json();
+  return data.data;
+};
+
+const SubreditPage = async () => {
+  const postData = await handleFetchPost();
   return (
-    <main className="flex min-h-screen bg-gray">
-      <section className="w-inner-container mx-auto">
-        <div className=" p-[20px] w-100 grid grid-cols-3 gap-4">
-          <div className="col-span-2">
-            <Filter />
-            <CommentList />
-          </div>
-          <div>
-            <Filter />
-          </div>
-        </div>
-      </section>
+    <main className="flex min-h-screen bg-reddit-gray">
+      <Post data={postData} />
     </main>
   );
-}
+};
+
+export default SubreditPage;
