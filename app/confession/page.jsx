@@ -15,8 +15,17 @@ const handleFetchPost = async () => {
         revalidate: 3000,
       }
     );
+
     if (!res.ok) {
-      console.log(`HTTP error! Status: ${res.status}`);
+      if (res.status === 403) {
+        console.log(
+          "Access forbidden. You may need to provide valid credentials or handle this case accordingly."
+        );
+        return null;
+      } else {
+        console.log(`HTTP error! Status: ${res.status}`);
+        return null;
+      }
     }
     const data = await res.json();
     return data.data;
