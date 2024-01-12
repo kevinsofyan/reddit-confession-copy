@@ -43,7 +43,7 @@ export const Comment = ({
       {replies && replies.data && replies.data.children && (
         <div className="ml-[30px]">
           {replies?.data?.children.map((reply, index) => (
-            <Fragment>
+            <Fragment key={index}>
               {reply.data.author && (
                 <Comment key={index} {...reply?.data} depth={depth + 1} />
               )}
