@@ -57,7 +57,7 @@ const Comments = async ({ params }) => {
       commentData = fetchData[1].data?.children;
     }
   }
-  if (!commentData) {
+  if (!postData) {
     return <p></p>;
   }
 
@@ -65,7 +65,7 @@ const Comments = async ({ params }) => {
     <main className="flex min-h-screen bg-reddit-gray">
       <section className="w-inner-container mx-auto">
         <div className=" p-[20px] w-100 grid lg:grid-cols-4 gap-4">
-          {fetchData && (
+          {fetchData && postData && (
             <div className="col-span-3 ">
               <div className="bg-white rounded-[4px] border flex mb-[10px] pr-4">
                 <div className="flex-none w-[50px] rounded-[4px]">
