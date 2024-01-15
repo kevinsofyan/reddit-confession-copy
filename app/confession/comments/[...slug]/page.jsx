@@ -3,18 +3,23 @@ import { PostBottomMenu } from "@/components/post/PostBottomMenu";
 import { PostLayoutCardArticles } from "@/components/post/postLayout/card/postLayoutCardArticles";
 import { Vote } from "@/components/vote/vote";
 import { commentsData } from "@/mock/comments";
-import axios from "axios";
 
 const handleFetchPostDetails = async (id) => {
   try {
-    const response = await axios.get(
+    const res = await fetch(
       `https://www.reddit.com/r/confession/comments/${id}.json`,
       {
-        headers: { "Cache-Control": "no-store" },
+        method: "GET",
+        cache: "no-store",
       }
     );
 
-    return response.data;
+    if (!res.ok) {
+      console.log(`HTTP error! Status: ${res.status}`);
+    }
+
+    const data = await res.json();
+    return data;
   } catch (error) {
     console.error(error);
   }

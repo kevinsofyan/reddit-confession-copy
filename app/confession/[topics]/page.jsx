@@ -5,11 +5,18 @@ import axios from "axios";
 
 const handleFetchPostTopics = async (topics) => {
   try {
-    const response = await axios.get(
-      `https://www.reddit.com/r/confession/${topics}.json?limit=50`
+    const res = await fetch(
+      `https://www.reddit.com/r/confession/${topics}.json?limit=50`,
+      {
+        method: "GET",
+        revalidate: 3000,
+      }
     );
-
-    return response.data.data;
+    if (!res.ok) {
+      console.log(`HTTP error! Status: ${res.status}`);
+    }
+    const data = await res.json();
+    return data.data;
   } catch (error) {
     console.error(error);
   }

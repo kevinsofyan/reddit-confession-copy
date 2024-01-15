@@ -10,14 +10,19 @@ export const metadata = {
 
 const handleFetchPost = async () => {
   try {
-    const response = await axios.get(
-      "https://www.reddit.com/r/confession.json?limit=50",
+    const res = await fetch(
+      `https://www.reddit.com/r/confession.json?limit=50`,
       {
+        method: "GET",
+        revalidate: 3000,
         headers: { "Content-Type": "application/json" },
       }
     );
-
-    return response.data.data;
+    if (!res.ok) {
+      throw new Error(`HTTP error! Status: ${res.status}`);
+    }
+    const data = await res.json();
+    return data.data;
   } catch (error) {
     console.error(error);
   }
