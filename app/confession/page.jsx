@@ -1,6 +1,5 @@
 import { Post } from "@/components/post/Post";
 import { confessionData } from "@/mock/confession";
-import axios from "axios";
 
 export const metadata = {
   title: "Admit your wrongdoings",

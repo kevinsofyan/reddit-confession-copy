@@ -1,8 +1,6 @@
 import { Post } from "@/components/post/Post";
 import { confessionTopics } from "@/mock/confessionTopics";
 
-import axios from "axios";
-
 const handleFetchPostTopics = async (topics) => {
   try {
     const res = await fetch(
@@ -21,6 +19,7 @@ const handleFetchPostTopics = async (topics) => {
     console.error(error);
   }
 };
+
 const Confession = async ({ params }) => {
   const { topics } = params;
   const postData = confessionTopics[topics].data;
