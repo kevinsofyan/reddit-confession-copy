@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 import { CommentBottomMenu } from "./commentBottomMenu";
 import { formatTimeDifference } from "@/util/utcTimeDifference";

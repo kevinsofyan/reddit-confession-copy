@@ -3,6 +3,7 @@ import { PostBottomMenu } from "@/components/post/PostBottomMenu";
 import { PostLayoutCardArticles } from "@/components/post/postLayout/card/postLayoutCardArticles";
 import { Vote } from "@/components/vote/vote";
 import { commentsData } from "@/mock/comments";
+import Link from "next/link";
 
 const handleFetchPostDetails = async (id) => {
   try {
@@ -67,6 +68,14 @@ const Comments = async ({ params }) => {
         <div className=" p-[20px] w-100 grid lg:grid-cols-4 gap-4">
           {fetchData && postData && (
             <div className="col-span-3 ">
+              <div className=" mb-4">
+                <h1 className="text-xl mb-0 line-clamp-1">
+                  Admit your wrongdoings
+                </h1>
+                <Link href={"/confession"} className="text-sm">
+                  /r/confession
+                </Link>
+              </div>
               <div className="bg-white rounded-[4px] border flex mb-[10px] pr-4">
                 <div className="flex-none w-[50px] rounded-[4px]">
                   <Vote score={postData.score} />

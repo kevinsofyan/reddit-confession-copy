@@ -5,7 +5,7 @@ import Filter from "../filter/filter";
 import { PostList } from "./PostList";
 import useThemeStore from "@/store/useThemeStore";
 import clsx from "clsx";
-import usePostStore from "@/store/usePostStore";
+import Link from "next/link";
 
 export const Post = ({ data, topics = null }) => {
   const { theme } = useThemeStore();
@@ -22,6 +22,14 @@ export const Post = ({ data, topics = null }) => {
         })}
       >
         <div className="col-span-3">
+          <div className=" mb-4">
+            <h1 className="text-xl mb-0 line-clamp-1">
+              Admit your wrongdoings
+            </h1>
+            <Link href={"/confession"} className="text-sm">
+              /r/confession
+            </Link>
+          </div>
           <Filter active={topics} />
           <PostList data={data} />
         </div>
