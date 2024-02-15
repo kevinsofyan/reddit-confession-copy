@@ -38,7 +38,7 @@ const Confession = async () => {
       <azara-bot
         widget-id="dba9df02-ce88-46d2-8b22-82fc18361170"
         mode="DARK"
-        tenant-id="null"
+        tenant-id="azara-uat"
         agent-id="c3814cfc-ebee-437d-b739-000efc66040e"
         show-form="true"
         show-source="false"
