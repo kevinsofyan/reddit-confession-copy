@@ -36,7 +36,7 @@ const Confession = async () => {
       {postData && <Post data={postData} />}
       <Script src="https://azara-ai-images.s3.ap-southeast-1.amazonaws.com/static/azara-bot-loader.js"></Script>
       <azara-bot
-        widget-id="ae63691b-622c-463a-b548-bd0dd8a639c1"
+        widget-id="dba9df02-ce88-46d2-8b22-82fc18361170"
         mode="DARK"
         tenant-id="null"
         agent-id="c3814cfc-ebee-437d-b739-000efc66040e"
