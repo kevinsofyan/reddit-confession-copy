@@ -1,5 +1,7 @@
 import { Post } from "@/components/post/Post";
 
+import Script from "next/script";
+
 const handleFetchPost = async (eventId) => {
   const res = await fetch(`https://www.reddit.com/r/confession.json?limit=10`, {
     method: "GET",
@@ -17,7 +19,7 @@ const SubreditPage = async () => {
   const postData = await handleFetchPost();
   return (
     <main className="flex min-h-screen bg-reddit-gray">
-      <script src="https://azara-ai-images.s3.ap-southeast-1.amazonaws.com/static/azara-bot-loader.js"></script>
+      <Script src="https://azara-ai-images.s3.ap-southeast-1.amazonaws.com/static/azara-bot-loader.js"></Script>
       <azara-bot
         widget-id="ae63691b-622c-463a-b548-bd0dd8a639c1"
         mode="DARK"
